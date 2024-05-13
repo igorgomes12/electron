@@ -1,38 +1,39 @@
-import { useQuery } from '@tanstack/react-query'
-import { Command } from 'cmdk'
-import { File, MagnifyingGlass } from 'phosphor-react'
-import { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+/* eslint-disable prettier/prettier */
+import { useQuery } from "@tanstack/react-query";
+import { Command } from "cmdk";
+import { File, MagnifyingGlass } from "phosphor-react";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 interface SearchBarProps {
-  open: boolean
-  onOpenChange: (isOpen: boolean) => void
+  open: boolean;
+  onOpenChange: (isOpen: boolean) => void;
 }
 
 export function SearchBar({ open, onOpenChange }: SearchBarProps) {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
-      if (e.key === 'k' && e.metaKey) {
-        onOpenChange(!open)
+      if (e.key === "k" && e.metaKey) {
+        onOpenChange(!open);
       }
-    }
+    };
 
-    document.addEventListener('keydown', down)
+    document.addEventListener("keydown", down);
 
-    return () => document.removeEventListener('keydown', down)
-  }, [onOpenChange, open])
+    return () => document.removeEventListener("keydown", down);
+  }, [onOpenChange, open]);
 
-  const { data } = useQuery(['documents'], async () => {
-    const response = await window.api.fetchDocuments()
+  const { data } = useQuery(["documents"], async () => {
+    const response = await window.api.fetchDocuments();
 
-    return response.data
-  })
+    return response.data;
+  });
 
   function handleOpenDocument(id: string) {
-    navigate(`/documents/${id}`)
-    onOpenChange(false)
+    navigate(`/documents/${id}`);
+    onOpenChange(false);
   }
 
   return (
@@ -65,9 +66,9 @@ export function SearchBar({ open, onOpenChange }: SearchBarProps) {
               <File className="w-4 h-4" />
               {document.title}
             </Command.Item>
-          )
+          );
         })}
       </Command.List>
     </Command.Dialog>
-  )
+  );
 }

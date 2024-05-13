@@ -1,13 +1,14 @@
-import { app, shell, BrowserWindow } from 'electron'
-import path from 'node:path'
-import { createFileRoute, createURLRoute } from 'electron-router-dom'
-import { electronApp, optimizer, is } from '@electron-toolkit/utils'
+/* eslint-disable prettier/prettier */
+import { app, shell, BrowserWindow } from "electron";
+import path from "node:path";
+import { createFileRoute, createURLRoute } from "electron-router-dom";
+import { electronApp, optimizer, is } from "@electron-toolkit/utils";
 
-import { createTray } from './tray'
-import { createShortcuts } from './shortcuts'
+import { createTray } from "./tray";
+import { createShortcuts } from "./shortcuts";
 
-import './ipc'
-import './store'
+import "./ipc";
+import "./store";
 
 function createWindow(): void {
   const mainWindow = new BrowserWindow({
@@ -15,72 +16,72 @@ function createWindow(): void {
     height: 700,
     show: false,
     autoHideMenuBar: true,
-    backgroundColor: '#17141f',
-    titleBarStyle: 'hiddenInset',
+    backgroundColor: "#f0f0f0",
+    titleBarStyle: "hiddenInset",
     trafficLightPosition: {
       x: 20,
       y: 20,
     },
-    ...(process.platform === 'linux'
+    ...(process.platform === "linux"
       ? {
-          icon: path.join(__dirname, '../../build/icon.png'),
+          icon: path.join(__dirname, "../../build/icon.png"),
         }
       : {}),
     webPreferences: {
-      preload: path.join(__dirname, '../preload/index.js'),
+      preload: path.join(__dirname, "../preload/index.js"),
       sandbox: false,
     },
-  })
+  });
 
-  createTray(mainWindow)
-  createShortcuts(mainWindow)
+  createTray(mainWindow);
+  createShortcuts(mainWindow);
 
-  mainWindow.on('ready-to-show', () => {
-    mainWindow.show()
-  })
+  mainWindow.on("ready-to-show", () => {
+    mainWindow.show();
+  });
 
   mainWindow.webContents.setWindowOpenHandler((details) => {
-    shell.openExternal(details.url)
-    return { action: 'deny' }
-  })
+    shell.openExternal(details.url);
+    return { action: "deny" };
+  });
 
   const devServerURL = createURLRoute(
     process.env.ELECTRON_RENDERER_URL!,
-    'main',
-  )
+    "main"
+  );
 
   const fileRoute = createFileRoute(
-    path.join(__dirname, '../renderer/index.html'),
-    'main',
-  )
+    path.join(__dirname, "../renderer/index.html"),
+    "main"
+  );
 
   if (is.dev && process.env.ELECTRON_RENDERER_URL) {
-    mainWindow.loadURL(devServerURL)
+    mainWindow.loadURL(devServerURL);
   } else {
-    mainWindow.loadFile(...fileRoute)
+    mainWindow.loadFile(...fileRoute);
   }
 }
 
-if (process.platform === 'darwin') {
-  app.dock.setIcon(path.resolve(__dirname, 'icon.png'))
+if (process.platform === "darwin") {
+  app.dock.setIcon(path.resolve(__dirname, "icon.png"));
 }
 
 app.whenReady().then(() => {
-  electronApp.setAppUserModelId('com.electron')
+  electronApp.setAppUserModelId("com.electron");
 
-  app.on('browser-window-created', (_, window) => {
-    optimizer.watchWindowShortcuts(window)
-  })
+  app.on("browser-window-created", (_, window) => {
+    optimizer.watchWindowShortcuts(window);
+  });
 
-  createWindow()
+  createWindow();
 
-  app.on('activate', function () {
-    if (BrowserWindow.getAllWindows().length === 0) createWindow()
-  })
-})
+  app.on("activate", function () {
+    if (BrowserWindow.getAllWindows().length === 0) createWindow();
+  });
+});
 
-app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') {
-    app.quit()
+app.on("window-all-closed", () => {
+  if (process.platform !== "darwin") {
+    app.quit();
   }
-})
+});

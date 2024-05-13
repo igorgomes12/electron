@@ -1,33 +1,34 @@
-import clsx from 'clsx'
-import { NavLink } from 'react-router-dom'
-import { DotsThree } from 'phosphor-react'
-import { ReactNode } from 'react'
+/* eslint-disable no-undef */
+/* eslint-disable prettier/prettier */
+import clsx from "clsx";
+import { NavLink } from "react-router-dom";
+import React, { ReactNode } from "react";
 
 interface LinkProps {
-  to: string
-  children: ReactNode
+  to: string;
+  children: ReactNode;
+  icon?: JSX.Element;
 }
 
-export function Link({ to, children }: LinkProps) {
+export function Link({ to, children, icon }: LinkProps) {
   return (
     <NavLink
       to={to}
       className={({ isActive }) => {
         return clsx(
-          'flex items-center text-sm gap-2 text-rotion-100 hover:text-rotion-50 py-1 px-3 rounded group hover:bg-rotion-700',
+          "flex items-center text-md w-full text-black hover:bg-amareloFood/70 py-1 px-1 rounded group ",
           {
-            'bg-rotion-700': isActive,
-          },
-        )
+            "bg-amareloFood flex p-2 items-center": isActive,
+          }
+        );
       }}
     >
-      <span className="truncate flex-1">{children}</span>
-
-      <div className="flex items-center h-full group-hover:visible ml-auto text-rotion-100">
-        <button className="px-px rounded-sm hover:bg-rotion-500">
-          <DotsThree weight="bold" className="h-4 w-4" />
-        </button>
+      <div className="flex justify-center items-center w-full gap-2">
+        <span>
+          {icon && React.cloneElement(icon, { className: "h-6 w-6" })}
+        </span>
+        <span className="truncate flex-1">{children}</span>
       </div>
     </NavLink>
-  )
+  );
 }

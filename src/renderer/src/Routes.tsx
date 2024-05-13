@@ -1,8 +1,10 @@
-import { Router, Route } from 'electron-router-dom'
+/* eslint-disable prettier/prettier */
+import { Router, Route } from "electron-router-dom";
 
-import { Blank } from './pages/blank'
-import { Document } from './pages/document'
-import { Default } from './pages/layouts/default'
+import { Blank } from "./pages/blank";
+import { Document } from "./pages/document";
+import { Default } from "./pages/layouts/default";
+import { RegisterUser } from "./pages/RegisterUser/registerUser";
 
 export function Routes() {
   return (
@@ -11,8 +13,9 @@ export function Routes() {
         <Route path="/" element={<Default />}>
           <Route path="/" element={<Blank />} />
           <Route path="/documents/:id" element={<Document />} />
+          <Route path="/admin" element={<RegisterUser />} />
         </Route>
       }
     />
-  )
+  );
 }
