@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import clsx from "clsx";
 import * as Collapsible from "@radix-ui/react-collapsible";
-import { Code, CaretDoubleRight, TrashSimple } from "phosphor-react";
+import { Code, TrashSimple, House } from "phosphor-react";
 import * as Breadcrumbs from "./Breadcrumbs";
 import { useNavigate, useParams } from "react-router-dom";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
@@ -52,7 +52,7 @@ export function Header({ isSidebarOpen }: HeaderProps) {
           block: !isSidebarOpen,
         })}
       >
-        <CaretDoubleRight className="h-4 w-4" />
+        <House className="h-6 text-black w-6" />
       </Collapsible.Trigger>
 
       {id && (

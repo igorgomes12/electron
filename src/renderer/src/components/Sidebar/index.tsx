@@ -1,20 +1,10 @@
 /* eslint-disable prettier/prettier */
 import logo from "../../img/logo-lider-web-food.svg";
-
 import clsx from "clsx";
-// import * as Navigation from "./Navigation";
 import * as Collapsible from "@radix-ui/react-collapsible";
-import {
-  CaretDoubleLeft,
-  // Cardholder,
-  // ShoppingCart,
-  // TrendUp,
-  // Folders,
-} from "phosphor-react";
+import { CaretDoubleLeft } from "phosphor-react";
 import { CreatePage } from "./CreatePage";
-// import { Profile } from "./Profile";
 import { Search } from "./Search";
-// import { useQuery } from "@tanstack/react-query";
 
 // const main = [
 //   {
@@ -42,12 +32,6 @@ import { Search } from "./Search";
 export function Sidebar() {
   const isMacOS = process.platform === "darwin";
 
-  // const { data } = useQuery(["documents"], async () => {
-  //   const response = await window.api.fetchDocuments();
-
-  //   return response.data;
-  // });
-
   return (
     <Collapsible.Content className="bg-white flex-shrink-0 border-r h-screen relative group data-[state=open]:animate-slideIn data-[state=closed]:animate-slideOut overflow-hidden">
       <Collapsible.Trigger
@@ -59,11 +43,11 @@ export function Sidebar() {
           }
         )}
       >
-        <CaretDoubleLeft className="h-4 w-4" />
+        <CaretDoubleLeft className="h-5 w-5 text-black" />
       </Collapsible.Trigger>
 
       <div
-        className={clsx("region-drag h-14", {
+        className={clsx("region-drag h-8", {
           block: isMacOS,
           hidden: !isMacOS,
         })}
@@ -78,8 +62,9 @@ export function Sidebar() {
         )}
       >
         <img className="w-60 p-4 h-20" src={logo} alt="Logo" />
-        {/* <Profile /> */}
         <Search />
+
+        {/* criar componente de menu lateral */}
 
         {/* <Navigation.Root>
           <Navigation.Section>

@@ -75,12 +75,14 @@ export function FormSignIn() {
           </div>
 
           <div className="flex items-center justify-center">
-            <button
-              className="w-full p-3 rounded-lg text-black font-medium bg-amareloFood hover:bg-amareloFood/90"
-              type="submit"
-            >
-              Entrar
-            </button>
+            <Link to="/tela-principal">
+              <button
+                className="w-full p-3 rounded-lg text-black font-medium bg-amareloFood hover:bg-amareloFood/90"
+                type="submit"
+              >
+                Entrar
+              </button>
+            </Link>
           </div>
           <div className="flex flex-col items-center justify-center gap-1">
             <Link
