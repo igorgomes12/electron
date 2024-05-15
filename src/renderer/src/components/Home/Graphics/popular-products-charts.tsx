@@ -37,7 +37,9 @@ export function PopularProductschart() {
   return (
     <div className="w-80 col-span-3">
       <div className="pb-8">
-        <div className="text-base font-medium">Produtos populares</div>
+        <div className="text-base text-black font-medium">
+          Produtos populares
+        </div>
       </div>
       <div>
         <ResponsiveContainer width={"100%"} height={240}>

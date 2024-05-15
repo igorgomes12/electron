@@ -13,7 +13,7 @@ import "./store";
 function createWindow(): void {
   const mainWindow = new BrowserWindow({
     width: 1220,
-    height: 800,
+    height: 700,
     show: false,
     autoHideMenuBar: true,
     backgroundColor: "#f0f0f0",

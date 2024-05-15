@@ -45,7 +45,7 @@ export function RevenueChart() {
     <div className="sm:w-[20rem] md:w-[30rem] lg:w-[45rem] col-span-6">
       <div className="flex-row items-center justify-between pb-8">
         <div className="space-y-1">
-          <div>Receita diária no período</div>
+          <div className="text-black">Receita diária no período</div>
         </div>
       </div>
       <div>

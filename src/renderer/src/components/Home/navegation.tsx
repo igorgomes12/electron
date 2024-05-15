@@ -3,7 +3,6 @@
 
 import { ReactElement } from "react";
 import { MainCardsNavigation } from "./main-cards-navigation";
-// import { MainNavigation } from "./main-navigation";
 import { Cardholder, Notebook, Table, Truck, Users } from "phosphor-react";
 import { MainGraphics } from "./main-grafics";
 
@@ -17,7 +16,7 @@ const cardProducts: { titleCard: string; icon: ReactElement; link: string }[] =
     {
       titleCard: "Cardápio",
       icon: <Notebook size={80} />,
-      link: "/cardapio",
+      link: "/menu",
     },
     {
       titleCard: "Delivery",

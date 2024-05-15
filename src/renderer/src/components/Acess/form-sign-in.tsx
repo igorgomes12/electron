@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { Eye, EyeSlash } from "phosphor-react";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 
 const signInSchema = z.object({
   email: z
@@ -32,6 +32,8 @@ export function FormSignIn() {
   const onSubmitSignIn = (data: signForm) => {
     console.log(data);
   };
+
+  const navigate = useNavigate();
 
   return (
     <div className="w-full bg-gray-100 flex items-center justify-center p-8">
@@ -74,8 +76,8 @@ export function FormSignIn() {
             </div>
           </div>
 
-          <div className="flex items-center justify-center">
-            <Link to="/tela-principal">
+          <div className="flex w-full items-center justify-center">
+            <Link className="flex w-full " to="/tela-principal">
               <button
                 className="w-full p-3 rounded-lg text-black font-medium bg-amareloFood hover:bg-amareloFood/90"
                 type="submit"

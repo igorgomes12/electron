@@ -9,6 +9,7 @@ import { NavegationHome } from "./components/Home/navegation";
 import { Client } from "./components/Home/Client/client";
 import { RegisterClient } from "./components/Home/Client/registerClient";
 import { Dashboard } from "./components/Dashboard/dashboard";
+import { Menu } from "./components/Menu/menu";
 
 export function Routes() {
   return (
@@ -20,6 +21,7 @@ export function Routes() {
           <Route path="/admin" element={<RegisterUser />} />
           <Route path="/client" element={<Client />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/menu" element={<Menu />} />
           <Route path="/clientRegister" element={<RegisterClient />} />
           <Route path="/tela-principal" element={<NavegationHome />} />
         </Route>
