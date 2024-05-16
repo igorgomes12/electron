@@ -1,12 +1,6 @@
 import { create } from "zustand";
-
-type TModalCardShopping = {
-  isOpen: boolean;
-  onOpen: () => void;
-  onClose: () => void;
-};
-
-export const useModalCardShopping = create<TModalCardShopping>((set) => ({
+import { TModalDefault } from "../types";
+export const useModalCardShopping = create<TModalDefault>((set) => ({
   isOpen: false,
   onOpen: () => {
     set({

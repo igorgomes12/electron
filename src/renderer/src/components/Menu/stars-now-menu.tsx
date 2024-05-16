@@ -3,6 +3,7 @@ import burguer from "../../img/burguer.jpg";
 import { Shopping } from "./Shopping/shopping";
 import { useModalCardShopping } from "../../hooks/ModalCardShopping/useModalCardShopping";
 import { ModalCardShopping } from "./Shopping/modal-card-shopping";
+import { TextHeader } from "../utils/text-header";
 
 type TStars = {
   title: string;

@@ -1,4 +1,5 @@
 import burguer from "../../img/burguer.jpg";
+import { TextHeader } from "../utils/text-header";
 
 type TCategories = {
   title: string;
@@ -35,9 +36,7 @@ const cardCategories: TCategories[] = [
 export function CategoriesMenu() {
   return (
     <div>
-      <h1 className="flex px-6 py-2 items-start justify-start text-black text-xl ">
-        Categorias
-      </h1>
+      <TextHeader title=" Categorias" />
       {/* card menu */}
       <div className="border-b w-full  gap-2 flex p-4">
         {cardCategories.map(({ title, img }, i: number) => (

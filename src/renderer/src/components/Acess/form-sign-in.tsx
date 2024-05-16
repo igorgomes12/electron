@@ -1,10 +1,10 @@
-/* eslint-disable prettier/prettier */
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { Eye, EyeSlash } from "phosphor-react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { Input } from "../utils/input";
 
 const signInSchema = z.object({
   email: z
@@ -25,15 +25,17 @@ export function FormSignIn() {
     setIsShow(!isShow);
   };
 
-  const { register, handleSubmit } = useForm<signForm>({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<signForm>({
     resolver: zodResolver(signInSchema),
   });
 
   const onSubmitSignIn = (data: signForm) => {
     console.log(data);
   };
-
-  const navigate = useNavigate();
 
   return (
     <div className="w-full bg-gray-100 flex items-center justify-center p-8">
@@ -49,23 +51,23 @@ export function FormSignIn() {
         <form onSubmit={handleSubmit(onSubmitSignIn)} className="space-y-4">
           <div className="space-y-1 flex flex-col gap-2 ">
             <label htmlFor="email">E-mail</label>
-            <input
-              required
-              {...register("email")}
-              className="border w-full border-gray-400 rounded-md h-10 p-2"
+            <Input
+              errors={errors}
               id="email"
+              {...register("email")}
               type="email"
+              disabled={false}
             />
           </div>
           <div className="space-y-1 flex flex-col gap-2 ">
             <div className="flex flex-col relative">
               <label htmlFor="password">Senha</label>
-              <input
-                {...register("password")}
-                required
-                className="border border-gray-400 w-full rounded-md h-10 p-2"
+              <Input
+                errors={errors}
                 id="password"
-                type={isShow ? "password" : "text"}
+                {...register("password")}
+                type="password"
+                disabled={false}
               />
               <button
                 className="absolute top-11 transform -translate-y-1/2 right-0 flex items-center px-2"

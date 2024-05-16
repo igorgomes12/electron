@@ -3,6 +3,7 @@ import { useModalClientRegisterAdress } from "../../../hooks/ModalClientRegister
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { Input } from "../../utils/input";
 
 // regex para CEP brasileiro (8 dígitos)
 const cepRegex = /^[0-9]{5}-?[0-9]{3}$/;
@@ -69,10 +70,12 @@ export function ModalAdressClient() {
         <form onSubmit={handleSubmit(onSubmitAdressClient)} action="">
           <div className="space-y-1 flex flex-col gap-2 w-full ">
             <label htmlFor="surname">Descrição</label>
-            <input
-              className="w-full  rounded-md h-10 bg-gray-100 p-2"
+            <Input
+              errors={errors}
+              id="description"
               {...register("description")}
-              type="text"
+              type="description"
+              disabled={false}
             />
             {errors.description && (
               <span className="text-red-500">{errors.description.message}</span>
@@ -81,11 +84,13 @@ export function ModalAdressClient() {
           <div className="space-y-1 flex flex-col gap-2 w-full">
             <label htmlFor="cep">CEP</label>
             <div className="relative w-full">
-              <input
+              <Input
+                errors={errors}
+                id="cep"
                 placeholder="00000-000"
                 {...register("cep")}
-                className="w-full rounded-md h-10 bg-gray-100 p-2"
                 type="text"
+                disabled={false}
               />
               <MagnifyingGlass
                 size={20}
@@ -99,10 +104,12 @@ export function ModalAdressClient() {
           </div>
           <div className="space-y-1 flex flex-col gap-2 w-full ">
             <label htmlFor="adress">Endereço</label>
-            <input
+            <Input
+              errors={errors}
+              id="adress"
               {...register("adress")}
-              className="w-full rounded-md h-10 bg-gray-100 p-2"
               type="text"
+              disabled={false}
             />
             {errors.adress && (
               <span className="text-red-500">{errors.adress.message}</span>
@@ -110,20 +117,23 @@ export function ModalAdressClient() {
           </div>
           <div className="space-y-1 flex flex-col gap-2 w-full ">
             <label htmlFor="number">Número</label>
-            <input
+            <Input
+              errors={errors}
+              id="number"
               {...register("number")}
-              className="w-full rounded-md h-10 bg-gray-100 p-2"
               type="text"
+              disabled={false}
             />
           </div>
           <div className="space-y-1 flex flex-col gap-2 w-full ">
             <label htmlFor="city">Cidade</label>
             <div className="relative w-full">
-              <input
+              <Input
+                errors={errors}
+                id="city"
                 {...register("city")}
-                className="w-full rounded-md h-10 bg-gray-100 p-2"
                 type="text"
-                placeholder="Pesquise a cidade"
+                disabled={false}
               />
               <MagnifyingGlass
                 size={20}
@@ -137,10 +147,12 @@ export function ModalAdressClient() {
           </div>
           <div className="space-y-1 flex flex-col gap-2 w-full ">
             <label htmlFor="neighborhood">Bairro</label>
-            <input
+            <Input
+              errors={errors}
+              id="neighborhood"
               {...register("neighborhood")}
-              className="w-full rounded-md h-10 bg-gray-100 p-2"
               type="text"
+              disabled={false}
             />
             {errors.neighborhood && (
               <span className="text-red-500">
@@ -150,10 +162,12 @@ export function ModalAdressClient() {
           </div>
           <div className="space-y-1 flex flex-col gap-2 w-full ">
             <label htmlFor="complement">Complemento</label>
-            <input
+            <Input
+              errors={errors}
+              id="complement"
               {...register("complement")}
-              className="w-full rounded-md h-10 bg-gray-100 p-2"
               type="text"
+              disabled={false}
             />
             {errors.complement && (
               <span className="text-red-500">{errors.complement.message}</span>

@@ -1,11 +1,12 @@
 /* eslint-disable prettier/prettier */
-import { PopularProductschart } from "../Home/Graphics/popular-products-charts";
-import { RevenueChart } from "../Home/Graphics/revenue-chart";
-import { Breadcrumb } from "../componentsUtils/breadcrumb";
-import { DayOrderAmountCard } from "./day-order-amount-card";
-import { MonthOrderAmountCard } from "./month-order-amount-card";
-import { MonthCancelOrderAmountCard } from "./mounth-canceled-ordes-card";
-import { MonthRevenueCard } from "./mouth-revenue-card";
+
+import { DayOrderAmountCard } from "../../components/Dashboard/day-order-amount-card";
+import { MonthOrderAmountCard } from "../../components/Dashboard/month-order-amount-card";
+import { MonthCancelOrderAmountCard } from "../../components/Dashboard/mounth-canceled-ordes-card";
+import { MonthRevenueCard } from "../../components/Dashboard/mouth-revenue-card";
+import { PopularProductschart } from "../../components/Home/Graphics/popular-products-charts";
+import { RevenueChart } from "../../components/Home/Graphics/revenue-chart";
+import { Breadcrumb } from "../../components/componentsUtils/breadcrumb";
 
 export function Dashboard() {
   return (

@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useModalClientRegisterAdress } from "../../../hooks/ModalClientRegisterAdress/useModalClientRegisterAdress";
 import { ModalAdressClient } from "./modal-adress-client";
+import { Input } from "../../utils/input";
 
 const clientRegisterSchema = z.object({
   name: z.string().min(3, { message: "Favor preencher o nome completo" }),
@@ -44,7 +45,11 @@ type registerFormClient = z.infer<typeof clientRegisterSchema>;
 export function FormRegisterClient() {
   const { isOpen, onOpen } = useModalClientRegisterAdress();
 
-  const { register, handleSubmit } = useForm<registerFormClient>({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<registerFormClient>({
     resolver: zodResolver(clientRegisterSchema),
   });
   const handleSubmitForm = (data: registerFormClient) => {
@@ -60,60 +65,74 @@ export function FormRegisterClient() {
       >
         <div className="space-y-1 flex flex-col gap-2 w-full ">
           <label htmlFor="name">Nome</label>
-          <input
+          <Input
+            errors={errors}
+            id="name"
             {...register("name")}
-            className="w-full  rounded-md h-10 bg-gray-100 p-2"
-            type="text"
+            type="name"
+            disabled={false}
           />
         </div>
         <div className="space-y-1 flex flex-col gap-2 w-full ">
           <label htmlFor="surname">Apelido</label>
-          <input
+          <Input
+            errors={errors}
+            id="apelido"
             {...register("apelido")}
-            className="w-full  rounded-md h-10 bg-gray-100 p-2"
-            type="text"
+            type="apelido"
+            disabled={false}
           />
         </div>
         <div className="space-y-1 w-full flex flex-col gap-2 ">
           <label htmlFor="cpf">CPF/CPNJ</label>
-          <input
+          <Input
+            errors={errors}
+            id="cpfCnpj"
             {...register("cpfCnpj")}
-            className="w-full  rounded-md h-10 bg-gray-100 p-2"
-            type="text"
+            type="cpfCnpj"
+            disabled={false}
           />
         </div>
         <div className="space-y-1 flex flex-col gap-2 w-full ">
           <label htmlFor="state registration">Inscrição estadual</label>
-          <input
+          <Input
+            errors={errors}
+            id="inscricao"
             {...register("inscricao")}
-            className="w-full  rounded-md h-10 bg-gray-100 p-2"
-            type="text"
+            type="inscricao"
+            disabled={false}
           />
         </div>
         <div className="space-y-1 flex flex-col gap-2 w-full ">
           <label htmlFor="email">E-mail</label>
-          <input
+          <Input
+            errors={errors}
+            id="email"
             {...register("email")}
-            className="w-full  rounded-md h-10 bg-gray-100 p-2"
             type="email"
+            disabled={false}
           />
         </div>
         {/* contatos */}
         <div className="flex w-full gap-2 items-center justify-center">
           <div className="flex w-full flex-col gap-2">
-            <label htmlFor="email">Telefone</label>
-            <input
+            <label htmlFor="telefone">Telefone</label>
+            <Input
+              errors={errors}
+              id="telefone"
               {...register("telefone")}
-              className="w-full  rounded-md h-10 bg-gray-100 p-2"
-              type="tel"
+              type="telefone"
+              disabled={false}
             />
           </div>
           <div className="flex w-full flex-col gap-2">
-            <label htmlFor="email">Celular</label>
-            <input
+            <label htmlFor="celular">Celular</label>
+            <Input
+              errors={errors}
+              id="celular"
               {...register("celular")}
-              className="w-full  rounded-md h-10 bg-gray-100 p-2"
-              type="tel"
+              type="celular"
+              disabled={false}
             />
           </div>
         </div>

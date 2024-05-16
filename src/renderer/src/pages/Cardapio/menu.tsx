@@ -1,7 +1,7 @@
-import { Search } from "../Sidebar/Search";
-import { Breadcrumb } from "../componentsUtils/breadcrumb";
-import { CategoriesMenu } from "./categories-menu";
-import { StarsNowMenu } from "./stars-now-menu";
+import { CategoriesMenu } from "../../components/Menu/categories-menu";
+import { StarsNowMenu } from "../../components/Menu/stars-now-menu";
+import { Search } from "../../components/Sidebar/Search";
+import { Breadcrumb } from "../../components/componentsUtils/breadcrumb";
 
 export function Menu() {
   return (

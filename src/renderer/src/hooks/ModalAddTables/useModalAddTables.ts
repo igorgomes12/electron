@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import { TModalDefault } from "../types";
-export const useModalClientRegisterAdress = create<TModalDefault>((set) => ({
+
+export const useModalAddTables = create<TModalDefault>((set) => ({
   isOpen: false,
   onOpen: () => {
     set({
