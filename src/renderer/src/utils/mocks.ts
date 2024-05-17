@@ -7,3 +7,13 @@ export const tableCLient = [
   "Saldo de crédito",
   "Contatos",
 ];
+export const tableMesas = [
+  "Id",
+  "Cód.",
+  "Descrições",
+  "Quant.",
+  "V.Unit",
+  "Total",
+  "Viagem",
+  "Lançamento",
+];

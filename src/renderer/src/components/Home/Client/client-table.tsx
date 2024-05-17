@@ -1,8 +1,8 @@
 /* eslint-disable prettier/prettier */
 import { Link } from "react-router-dom";
 import { tableCLient } from "../../../utils/mocks";
-import Table from "../../TableComponent/table";
-import Pagination from "../../TableComponent/pagination";
+import Table from "../../Table-component/table";
+import Pagination from "../../Table-component/pagination";
 import { Breadcrumb } from "../../componentsUtils/breadcrumb";
 
 export function TableClient() {
@@ -14,7 +14,7 @@ export function TableClient() {
     saldo: <div className="text-center">R$ 0.90</div>,
     contatos: "3124-2142, 3124-2142, 3124-2142",
   };
-  const conteudoArray = Array.from({ length: 10 }, (_, i: number) => ({
+  const conteudoArray = Array.from({ length: 4 }, (_, i: number) => ({
     ...conteudo,
     key: i,
   }));
