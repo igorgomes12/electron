@@ -9,7 +9,7 @@ interface TableProps {
   list: Trows[];
 }
 
-export default function TableMesa({ headerTitles, list }: TableProps) {
+export default function TableTransfer({ headerTitles, list }: TableProps) {
   const [tableList, setTableList] = useState<any[][]>([]);
   useEffect(() => {
     const newArray: any[] = [];
@@ -25,7 +25,7 @@ export default function TableMesa({ headerTitles, list }: TableProps) {
             {headerTitles?.map((obj, i) => (
               <th
                 scope="col"
-                className={`cursor-pointer w-full px-2 py-1 hover:bg-gray-200 ${
+                className={`cursor-pointer w-96 px-2 py-1 hover:bg-gray-200  ${
                   i === 0 && "w-10"
                 } `}
                 key={+i}
@@ -40,7 +40,9 @@ export default function TableMesa({ headerTitles, list }: TableProps) {
             <tr key={+i} className="border-b bg-white hover:bg-amareloFood/20">
               {obj.map((content, indice) => (
                 <td
-                  className="px-1 py-1 text-center text-sm text-gray-600"
+                  className={`px-1 py-1 text-center text-sm text-black ${
+                    i === 3 && "w-full"
+                  }`}
                   key={+indice}
                 >
                   {content}

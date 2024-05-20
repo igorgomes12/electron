@@ -23,7 +23,7 @@ const conteudo: TTablesServices[] = [
 
 export function TableComponentTablesService() {
   return (
-    <div className="grid grid-cols-4 h-[26rem] border-b items-start gap-2 p-2 w-full">
+    <div className="grid grid-cols-4 h-[24.5rem] border-b items-start gap-2 p-2 w-full">
       {conteudo.map(({ icon, id }, i: number) => (
         <div
           key={`mesas_${id}-${i}`}

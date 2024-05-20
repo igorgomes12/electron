@@ -17,3 +17,19 @@ export const tableMesas = [
   "Viagem",
   "Lançamento",
 ];
+export const tableLancamentoItems = [
+  "Código",
+  "Descrição",
+  "Quantidade",
+  "Val.Unitário",
+  "Total",
+  "Viagem",
+];
+export const tableTransferir = [
+  "Transf",
+  "Item",
+  "Código",
+  "Descrição",
+  "Qtde.Total",
+  "Qtde.Transf",
+];

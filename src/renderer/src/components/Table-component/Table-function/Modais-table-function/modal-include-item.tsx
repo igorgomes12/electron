@@ -1,11 +1,22 @@
-import { Check, CheckCircle, X, XCircle } from "phosphor-react";
+import { CheckCircle, X, XCircle } from "phosphor-react";
 import { useModalIncludeItem } from "~/src/renderer/src/hooks/ModalTableFunction/useModalIncludeItem";
 import { Input } from "../../../utils/input";
 import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { tableLancamentoItems } from "~/src/renderer/src/utils/mocks";
+import TableMesa from "../../table-mesa";
 
 type ModalIncludeItemProps = {
   modalKey: string;
 };
+
+const includesItemSchema = z.object({
+  produtos: z.string(),
+  quantity: z.string(),
+});
+
+type TIncludesForm = z.infer<typeof includesItemSchema>;
 
 export function ModalIncludeItem({ modalKey }: ModalIncludeItemProps) {
   const { onClose } = useModalIncludeItem();
@@ -14,7 +25,27 @@ export function ModalIncludeItem({ modalKey }: ModalIncludeItemProps) {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm<TIncludesForm>({
+    resolver: zodResolver(includesItemSchema),
+  });
+
+  const submitIncludesItem = (data: TIncludesForm) => {
+    console.log(data);
+  };
+
+  // conteudo da tabela
+  const conteudo = {
+    cod: 10,
+    descricao: "teste",
+    quantidade: 2,
+    valor: "20,00",
+    total: "20,00",
+    viagem: "não",
+  };
+
+  const conteudoArray = Array.from({ length: 7 }, (_, i: number) => ({
+    ...conteudo,
+  }));
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-80">
@@ -30,7 +61,7 @@ export function ModalIncludeItem({ modalKey }: ModalIncludeItemProps) {
             weight="bold"
           />
         </div>
-        <form action="">
+        <form onSubmit={handleSubmit(submitIncludesItem)} action="">
           <div className="flex border-b items-center justify-center w-full">
             <div className="flex flex-col w-full gap-1 p-1">
               <label className="text-sm text-black" htmlFor="">
@@ -38,6 +69,7 @@ export function ModalIncludeItem({ modalKey }: ModalIncludeItemProps) {
               </label>
               <Input
                 id="produtos"
+                {...register("produtos")}
                 disabled={false}
                 type="text"
                 errors={errors}
@@ -49,6 +81,7 @@ export function ModalIncludeItem({ modalKey }: ModalIncludeItemProps) {
               </label>
               <Input
                 id="quantity"
+                {...register("quantity")}
                 disabled={false}
                 type="text"
                 errors={errors}
@@ -56,7 +89,12 @@ export function ModalIncludeItem({ modalKey }: ModalIncludeItemProps) {
             </div>
           </div>
           <div className="relative h-[21.5rem] border-b">
-            <div className="h-full overflow-auto">table</div>
+            <div className="h-full overflow-auto">
+              <TableMesa
+                list={conteudoArray}
+                headerTitles={tableLancamentoItems}
+              />
+            </div>
             <div className="absolute bottom-0 left-0 w-full flex items-center justify-start bg-white">
               <p className="text-2xl font-bold text-gray-400 p-2">
                 Total do Itens
@@ -71,17 +109,23 @@ export function ModalIncludeItem({ modalKey }: ModalIncludeItemProps) {
               <button className="bg-gray-50 text-blue-500 border shadow-lg hover:bg-gray-200  text-sm  flex-col gap-1 rounded-md p-1 flex items-start w-full justify-center">
                 F5-Adiciona Obs no Item Delete - Remove Item
               </button>
-              <button className="bg-gray-100 border-r-gray-400 border-b-gray-400 border-2 shadow-lg hover:bg-gray-200 flex text-black text-sm gap-1 rounded-md p-1 items-center w-full justify-center">
+              <button
+                onClick={() => onClose(modalKey)}
+                className="bg-gray-100 border-r-gray-400 border-b-gray-400 border-2 shadow-lg hover:bg-gray-200 flex text-black text-sm gap-1 rounded-md p-1 items-center w-full justify-center"
+              >
+                <XCircle size={32} className="text-red-600" weight="fill" />
+                Cancelar-Esc
+              </button>
+              <button
+                type="submit"
+                className="bg-gray-100 border-r-gray-400 border-b-gray-400 border-2 shadow-lg hover:bg-gray-200 flex text-black text-sm gap-1 rounded-md p-1 items-center w-full justify-center"
+              >
                 <CheckCircle
                   size={32}
                   className="text-green-600"
                   weight="fill"
                 />
                 Confirmar-F10
-              </button>
-              <button className="bg-gray-100 border-r-gray-400 border-b-gray-400 border-2 shadow-lg hover:bg-gray-200 flex text-black text-sm gap-1 rounded-md p-1 items-center w-full justify-center">
-                <XCircle size={32} className="text-red-600" weight="fill" />
-                Cancelar-Esc
               </button>
             </div>
           </div>

@@ -12,6 +12,7 @@ import { Dashboard } from "./pages/Dashboard/dashboard";
 import { Menu } from "./pages/Cardapio/menu";
 import { Client } from "./pages/Cliente/client";
 import { MesasFunction } from "./pages/Mesas/mesas-function";
+import { Delivery } from "./pages/Delivery/delivery";
 
 export function Routes() {
   return (
@@ -26,6 +27,7 @@ export function Routes() {
           <Route path="/menu" element={<Menu />} />
           <Route path="/mesas-function" element={<MesasFunction />} />
           <Route path="/mesas" element={<Mesas />} />
+          <Route path="/delivery" element={<Delivery />} />
           <Route path="/clientRegister" element={<RegisterClient />} />
           <Route path="/tela-principal" element={<NavegationHome />} />
         </Route>

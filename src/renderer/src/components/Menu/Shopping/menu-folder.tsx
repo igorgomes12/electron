@@ -3,15 +3,15 @@ import burguer from "../../../img/burguer.jpg";
 
 export function MenuFolder() {
   return (
-    <div className="relative py-2 px-2 w-full h-60 border-b">
+    <div className="relative py-2 px-2 w-full h-full border-b">
       <ArrowLeft
-        className="absolute cursor-pointer -left-4 top-1/2 transform -translate-y-1/2"
+        className="absolute cursor-pointer -left-1 top-1/2 transform -translate-y-1/2"
         size={28}
         weight="light"
       />
-      <img src={burguer} alt="burguer" className="w-full h-full object-cover" />
+      <img src={burguer} alt="burguer" className="w-full h-auto object-cover" />
       <ArrowRight
-        className="absolute cursor-pointer -right-4 top-1/2 transform -translate-y-1/2"
+        className="absolute cursor-pointer -right-1 top-1/2 transform -translate-y-1/2"
         size={28}
         weight="light"
       />

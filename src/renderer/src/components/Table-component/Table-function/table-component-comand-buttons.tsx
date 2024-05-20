@@ -3,6 +3,7 @@ import { ButtonIcon, TButtonsComand } from "../buttonIcon";
 import { useModalIncludeItem } from "../../../hooks/ModalTableFunction/useModalIncludeItem";
 import { ModalIncludeItem } from "./Modais-table-function/modal-include-item";
 import React from "react";
+import { ModalDeleteItem } from "./Modais-table-function/modal-delete-item";
 
 type ModalComponentType = React.FC<{ modalKey: string }> | undefined;
 
@@ -20,6 +21,7 @@ const conteudoButton: (TButtonsComand & {
     icon: <ThumbsDown size={32} className="text-red-600" weight="fill" />,
     titleButton: "Cancelar Item-F4",
     modalKey: "modal_cancelar_item_f4",
+    ModalComponent: ModalDeleteItem,
   },
   {
     icon: <Printer size={32} className="text-blue-600" weight="fill" />,

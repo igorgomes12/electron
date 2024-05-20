@@ -6,15 +6,21 @@ import {
   UserCirclePlus,
   UserSquare,
 } from "phosphor-react";
+import { useModalObservation } from "../../../hooks/ModalTableFunction/useModalObservation";
+import { ModalObservation } from "./Modais-table-function/modal-observation-table";
 
 export function TableComponentButtonFuncionario() {
+  const { isOpen, onOpen } = useModalObservation();
   return (
     <div className="flex border-b items-start flex-col justify-between">
       <div className="flex items-start w-full p-1 justify-between">
-        <div className="flex items-center py-1 gap-1">
+        <button
+          onClick={onOpen}
+          className="flex cursor-pointer items-center py-1 gap-1"
+        >
           <Notepad className="text-blue-400" size={24} weight="fill" />
           <p className="text-sm text-black">Obs-F6</p>
-        </div>
+        </button>
       </div>
       <div className="flex items-start w-full p-1 justify-between gap-1">
         <div className="flex items-center py-1 gap-1">
@@ -49,6 +55,7 @@ export function TableComponentButtonFuncionario() {
         </div>
         <p className="text-md">3 horas e 26 minutos</p>
       </div>
+      {isOpen && <ModalObservation />}
     </div>
   );
 }
