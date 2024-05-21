@@ -2,13 +2,13 @@ import { useModalCardShopping } from "~/src/renderer/src/hooks/ModalCardShopping
 import burguer from "../../../../img/burguer.jpg";
 import { useState } from "react";
 import { X } from "phosphor-react";
+import { cardStarsNow } from "../../stars-now-menu";
 
 export function InfoProductsShopping() {
   const { onClose } = useModalCardShopping();
   const [expandDescription, setExpandDescription] = useState(false);
   const description =
     "2 carnes de 120g (blend da casa), 2 ovos, bacon, 2 presuntos, 2 mussarela, banana, calabresa, alface, tomate, milho e batata.";
-
   return (
     <div className="flex items-center justify-center gap-2">
       <img className="w-28 h-20" src={burguer} alt="Hamburguer" />

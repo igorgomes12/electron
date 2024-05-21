@@ -9,10 +9,10 @@ import { NavegationHome } from "./components/Home/navegation";
 import { RegisterClient } from "./components/Home/Client/registerClient";
 import { Mesas } from "./pages/Mesas/mesas";
 import { Dashboard } from "./pages/Dashboard/dashboard";
-import { Menu } from "./pages/Cardapio/menu";
 import { Client } from "./pages/Cliente/client";
 import { MesasFunction } from "./pages/Mesas/mesas-function";
 import { Delivery } from "./pages/Delivery/delivery";
+import { Menu } from "./pages/Cardapio/menu";
 
 export function Routes() {
   return (
