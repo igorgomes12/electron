@@ -10,6 +10,7 @@ import notfound from "../../img/fallback.jpeg";
 import { TextHeader } from "../utils/text-header";
 import { StarsNowMenu } from "./stars-now-menu";
 import { Search } from "../Sidebar/Search";
+import { useSidebarStore } from "../../hooks/ModalCardShopping/useSidebar";
 
 export type TCategories = {
   title: string;
@@ -49,25 +50,30 @@ export const cardCategories: TCategories[] = [
 
 export function CategoriesMenu() {
   const [selectedCategory, setSelectedCategory] = useState<string>("Todos");
+  const { expanded } = useSidebarStore();
 
   const handleCategoryClick = (title: string) => {
     setSelectedCategory(title);
   };
 
   return (
-    <div className="py-1 px-1 w-full -mt-4">
+    <div className="py-1 px-1 w-full flex-1 -mt-4">
       <TextHeader title="Categorias" />
-      <div className="border-b-2 overflow-x-auto flex py-1">
-        <div className="flex gap-2">
+      <div className="border-b-2 overflow-x-auto flex w-full py-2">
+        <div
+          className={`grid  ${
+            expanded ? "grid-cols-4" : "grid-cols-5"
+          } px-2 gap-2`}
+        >
           {cardCategories.map(({ title, img }, i: number) => (
             <div
               key={`categories_${title}-${i}`}
               onClick={() => handleCategoryClick(title)}
-              className="flex cursor-pointer bg-gray-100 hover:bg-gray-300 rounded-lg xl:w-36 items-start justify-between"
+              className={`flex bg-gray-100 p-1 hover:bg-gray-300 cursor-pointer w-auto rounded-lg items-center justify-start`}
             >
-              <div className="flex p-1 gap-3 justify-start items-center">
+              <div className="flex items-center gap-1 py-1 px-1">
                 {img && (
-                  <img className="rounded-xl w-10 h-8" src={img} alt={title} />
+                  <img className="rounded-xl w-8 h-8" src={img} alt={title} />
                 )}
                 <p className="text-black text-sm">{title}</p>
               </div>
@@ -76,6 +82,7 @@ export function CategoriesMenu() {
         </div>
       </div>
       <Search setFilter={(value: string) => setSelectedCategory(value)} />
+
       <StarsNowMenu title={selectedCategory} filter={selectedCategory} />
     </div>
   );

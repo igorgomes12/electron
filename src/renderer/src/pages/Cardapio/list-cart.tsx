@@ -24,7 +24,7 @@ export function ListCart({
             <div className="flex-flex-col -inset-y-px">
               <h2 className="text-lg font-bold text-black">{titleProduct}</h2>
               <p
-                className={`text-zinc-800 w-64 text-xs font-semibold ${
+                className={`text-zinc-800 w-52 text-xs font-semibold ${
                   expandDescription ? "" : "truncate"
                 }`}
               >

@@ -2,7 +2,6 @@ import { useModalCardShopping } from "~/src/renderer/src/hooks/ModalCardShopping
 import burguer from "../../../../img/burguer.jpg";
 import { useState } from "react";
 import { X } from "phosphor-react";
-import { cardStarsNow } from "../../stars-now-menu";
 
 export function InfoProductsShopping() {
   const { onClose } = useModalCardShopping();
