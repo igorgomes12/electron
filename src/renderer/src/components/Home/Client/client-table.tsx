@@ -1,9 +1,7 @@
-/* eslint-disable prettier/prettier */
 import { Link } from "react-router-dom";
 import { tableCLient } from "../../../utils/mocks";
 import Table from "../../Table-component/table";
 import Pagination from "../../Table-component/pagination";
-import { Breadcrumb } from "../../componentsUtils/breadcrumb";
 
 export function TableClient() {
   const conteudo = {
@@ -20,15 +18,12 @@ export function TableClient() {
   }));
 
   return (
-    <div className="flex flex-col items-center justify-center overflow-y-auto w-full p-2 gap-4">
+    <div
+      id="Clientes"
+      className="flex flex-col items-center justify-center overflow-y-auto w-full p-2 gap-4"
+    >
       <div className="flex  items-start w-full justify-between gap-2 p-3">
-        <Breadcrumb
-          list={{
-            step1: { name: "Tela principal", navigate: "/tela-principal" },
-            lastStep: "Clientes",
-          }}
-        />
-        <Link to="/clientRegister">
+        <Link to="/clientRegister/:id">
           <button className="bg-amareloFood/80 hover:bg-amareloFood p-2 rounded-lg w-full text-black">
             Novo Cliente
           </button>

@@ -18,41 +18,20 @@ export type TCategories = {
 };
 
 export const cardCategories: TCategories[] = [
-  {
-    title: "Todos",
-    img: notfound,
-  },
-  {
-    title: "Burguer",
-    img: burguer,
-  },
-  {
-    title: "Porções",
-    img: batata,
-  },
-  {
-    title: "Agua",
-    img: agua,
-  },
-  {
-    title: "Açai",
-    img: acai,
-  },
-  {
-    title: "Refrigerante",
-    img: refri,
-  },
-  {
-    title: "Cerveja",
-    img: cerveja,
-  },
+  { title: "Todos", img: notfound },
+  { title: "Burguer", img: burguer },
+  { title: "Porções", img: batata },
+  { title: "Agua", img: agua },
+  { title: "Açai", img: acai },
+  { title: "Refrigerante", img: refri },
+  { title: "Cerveja", img: cerveja },
 ];
 
 export function CategoriesMenu() {
   const [selectedCategory, setSelectedCategory] = useState<string>("Todos");
   const { expanded } = useSidebarStore();
 
-  const handleCategoryClick = (title: string) => {
+  const handleCategorySelection = (title: string) => {
     setSelectedCategory(title);
   };
 
@@ -61,28 +40,27 @@ export function CategoriesMenu() {
       <TextHeader title="Categorias" />
       <div className="border-b-2 overflow-x-auto flex w-full py-2">
         <div
-          className={`grid  ${
-            expanded ? "grid-cols-4" : "grid-cols-5"
-          } px-2 gap-2`}
+          className={`w-full px-2 gap-2 ${
+            expanded ? "md:grid grid-cols-6" : "md:grid grid-cols-6"
+          } sm:flex sm:flex-col lg:px-4 lg:gap-4`}
         >
-          {cardCategories.map(({ title, img }, i: number) => (
+          {cardCategories.map(({ title, img }, index) => (
             <div
-              key={`categories_${title}-${i}`}
-              onClick={() => handleCategoryClick(title)}
-              className={`flex bg-gray-100 p-1 hover:bg-gray-300 cursor-pointer w-auto rounded-lg items-center justify-start`}
+              key={`categories_${title}-${index}`}
+              onClick={() => handleCategorySelection(title)}
+              className="flex bg-gray-100 p-1 hover:bg-gray-300 cursor-pointer rounded-lg items-center justify-start w-full lg:w-full xl:w-full"
             >
               <div className="flex items-center gap-1 py-1 px-1">
                 {img && (
                   <img className="rounded-xl w-8 h-8" src={img} alt={title} />
                 )}
-                <p className="text-black text-sm">{title}</p>
+                <p className="text-black text-sm truncate">{title}</p>
               </div>
             </div>
           ))}
         </div>
       </div>
       <Search setFilter={(value: string) => setSelectedCategory(value)} />
-
       <StarsNowMenu title={selectedCategory} filter={selectedCategory} />
     </div>
   );

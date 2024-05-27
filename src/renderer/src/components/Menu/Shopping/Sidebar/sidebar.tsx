@@ -22,7 +22,7 @@ export function Sidebar({ children }: SidebarProps) {
           expanded ? "w-52" : "w-16"
         } flex-col bg-white border-r shadow-sm`}
       >
-        <div className="p-3 pb-2 flex justify-between items-center">
+        <div className="py-4 px-4 pb-2 flex justify-between items-center">
           <img
             src={logo}
             className={`overflow-hidden transition-all ${

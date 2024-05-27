@@ -5,6 +5,7 @@ import { useCountStore } from "../../../hooks/ModalCardShopping/useListCartShopp
 import React from "react";
 
 const shoppingSchema = z.object({
+  subtotal: z.number().optional(),
   discount: z.number().optional(),
   addition: z.number().optional(),
   total: z.number(),
@@ -33,6 +34,15 @@ export function FormShopping() {
       action=""
     >
       <div className="flex flex-col items-start justify-center gap-2 border-b w-full">
+        <div className="flex w-full item-start justify-between px-2 py-1">
+          <span className="text-black font-medium">Subtotal</span>
+          <p
+            {...register("subtotal")}
+            className="text-sm font-light text-black"
+          >
+            R$ {total},00
+          </p>
+        </div>
         <div className="flex w-full item-start justify-between px-2 py-1">
           <span className="text-black font-medium">Desconto</span>
           <p

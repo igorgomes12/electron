@@ -57,7 +57,7 @@ export function FormRegisterClient() {
   };
 
   return (
-    <div className="flex w-full">
+    <div id="Clientes" className="flex w-full">
       <form
         onSubmit={handleSubmit(handleSubmitForm)}
         className="flex border rounded-lg gap-4 h-full p-2 items-center justify-center w-full flex-col"

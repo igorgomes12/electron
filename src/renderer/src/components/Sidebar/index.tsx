@@ -62,7 +62,7 @@ export function Sidebar() {
         )}
       >
         <img className="w-60 p-4 h-20" src={logo} alt="Logo" />
-        <Search />
+        {/* <Search /> */}
 
         {/* criar componente de menu lateral */}
 

@@ -12,6 +12,18 @@ module.exports = {
 
       colors: {
         amareloFood: "#fca012",
+        amarelo: {
+          50: "#fff6e7", // orangeLight
+          100: "#fff1db", // orangeLightHover
+          200: "#fee2b6", // orangeLightActive
+          300: "#fca012", // orangeNormal
+          400: "#e39010", // orangeNormalHover
+          500: "#ca800e", // orangeNormalActive
+          600: "#bd780e", // orangeDark
+          700: "#97600b", // orangeDarkHover
+          800: "#714808", // orangeDarkActive
+          900: "#583806", // orangeDarker
+        },
         muted: {
           DEFAULT: "hsl(var(--muted))",
           foreground: "hsl(var(--muted-foreground))",

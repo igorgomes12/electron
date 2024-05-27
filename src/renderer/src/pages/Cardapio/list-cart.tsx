@@ -2,6 +2,7 @@ import { useState } from "react";
 import { ButtonsListCart } from "./buttons-list-cart";
 
 type TListCart = {
+  id: string;
   img: string;
   titleProduct: string;
   descriptionProduct: string;
@@ -9,22 +10,24 @@ type TListCart = {
 };
 
 export function ListCart({
+  id,
   img,
   descriptionProduct,
   titleProduct,
   valueProduct,
 }: TListCart) {
   const [expandDescription, setExpandDescription] = useState(false);
+
   return (
-    <main className="w-full items-start border-b h-[28rem] py-1 justify-start flex">
-      <ol className="flex flex-col w-full gap-2 items-start justify-start">
-        <ul className="bg-gray-50 border border-gray-50 gap-2 px-1 w-full items-center justify-between flex rounded-md">
-          <div className="flex items-start py-1 gap-1">
-            <img className="w-20 h-20 rounded-md" src={img} alt="burguer" />
-            <div className="flex-flex-col -inset-y-px">
+    <main className="w-full h-full py-1 flex items-start justify-start border-b">
+      <ol className="w-full flex flex-col gap-2 items-start justify-start">
+        <li className="w-full flex items-center justify-between gap-2 px-1 bg-gray-50 border border-gray-50 rounded-md">
+          <div className="flex items-start gap-2 py-1">
+            <img className="w-24 h-20 rounded-md" src={img} alt="burguer" />
+            <div className="flex items-start py-1 flex-col">
               <h2 className="text-lg font-bold text-black">{titleProduct}</h2>
               <p
-                className={`text-zinc-800 w-52 text-xs font-semibold ${
+                className={`text-zinc-800 w-52 md:w-64 lg:w-64 xl:w-64 text-xs font-semibold ${
                   expandDescription ? "" : "truncate"
                 }`}
               >
@@ -41,8 +44,8 @@ export function ListCart({
               </p>
             </div>
           </div>
-          <ButtonsListCart valueProduct={valueProduct} />
-        </ul>
+          <ButtonsListCart id={id} valueProduct={valueProduct} />
+        </li>
       </ol>
     </main>
   );

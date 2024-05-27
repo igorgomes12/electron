@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { Router, Route } from "electron-router-dom";
 
 import { Blank } from "./pages/blank";
@@ -22,13 +21,13 @@ export function Routes() {
           <Route path="/" element={<Blank />} />
           <Route path="/documents/:id" element={<Document />} />
           <Route path="/admin" element={<RegisterUser />} />
-          <Route path="/client" element={<Client />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/menu" element={<Menu />} />
+          <Route path="/client/:id" element={<Client />} />
+          <Route path="/dashboard/:id" element={<Dashboard />} />
+          <Route path="/menu/:id" element={<Menu />} />
           <Route path="/mesas-function" element={<MesasFunction />} />
-          <Route path="/mesas" element={<Mesas />} />
-          <Route path="/delivery" element={<Delivery />} />
-          <Route path="/clientRegister" element={<RegisterClient />} />
+          <Route path="/mesas/:id" element={<Mesas />} />
+          <Route path="/delivery/:id" element={<Delivery />} />
+          <Route path="/clientRegister/:id" element={<RegisterClient />} />
           <Route path="/tela-principal" element={<NavegationHome />} />
         </Route>
       }

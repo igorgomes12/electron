@@ -1,12 +1,16 @@
 import { useCountStore } from "~/src/renderer/src/hooks/ModalCardShopping/useListCartShopping";
 
 export function ModalDeleteProduct() {
-  const { isOpen, onClose } = useCountStore();
+  const { isOpen, onClose, deleteItem, deleteProductId } = useCountStore();
 
   const handleDelete = () => {
-    console.log("item removido ");
+    if (deleteProductId) {
+      deleteItem(deleteProductId);
+      console.log("item removido ", deleteProductId);
+    }
     onClose();
   };
+
   if (!isOpen) {
     return null;
   }
